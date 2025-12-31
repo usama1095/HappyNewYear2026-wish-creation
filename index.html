@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Social Share -->
+<meta property="og:title" content="Happy New Year 2026 Wishes 🎆">
+<meta property="og:description" content="Create personalized New Year wishes and share them with your loved ones!">
+<meta property="og:image" content="https://res.cloudinary.com/daqmobuym/image/upload/v1767207694/w3wivv3yeordlahlnhk0.png">
+<meta property="og:url" content="https://usama1095.github.io/HappyNewYear2026-wish-creation/">
+<meta name="twitter:card" content="summary_large_image">
+
 <title>Happy New Year 2026</title>
 
 <style>
@@ -64,7 +71,15 @@ header{
   border-radius:20px;
   cursor:pointer;
 }
-
+#createBtn{
+ margin-top:10px;
+  padding:10px 20px;
+  background:#66ccff;
+  color:white;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+}
 /* WISHES */
 .wish-container{
   display:flex;
@@ -155,6 +170,7 @@ footer{
     <p>Enter the name of the person</p>
     <input id="nameInput" placeholder="Enter name">
     <button onclick="start()">Send Wishes 🎉</button>
+   
   </div>
 </div>
 
@@ -163,6 +179,7 @@ footer{
 </header>
 
 <button id="shareBtn" onclick="share()">🔗 Share Wishes</button>
+<button id="createBtn" onclick="create()">🎁 Create Wishes</button>
 
 <!-- 10 WISHES -->
 <div class="wish-container">
@@ -220,14 +237,33 @@ if(pname){
 }
 
 /* SHARE */
-function share(){
-  const url=location.href;
-  if(navigator.share){
-    navigator.share({title:"Happy New Year 2026",url});
-  }else{
-    navigator.clipboard.writeText(url);
-    alert("Link copied 🎉");
+function share() {
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Happy New Year 2026 🎆',
+      text: `Hey! Check out your personalized New Year wishes 🎉`,
+      url: url
+    }).catch(()=>{});
+  } else {
+    // fallback for desktop
+    navigator.clipboard.writeText(url).then(() => {
+      alert("🔗 Link copied! Share it with love ❤️");
+    }).catch(() => {
+      prompt("Copy this link:", url);
+    });
   }
+}
+
+function create() {
+   // Clear name input
+  document.getElementById("nameInput").value = "";
+  
+  // Hide wishes section & modal if open
+  document.getElementById("name-screen").style.display = "flex";
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
 
 /* CONFETTI */
