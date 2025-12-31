@@ -1,5 +1,17 @@
 # 🎆 Happy New Year 2026 – Wish Creation & Sharing SaaS 🎉
 
+## 🚀 How It Works
+
+1. User enters a name
+
+2. App generates wishes with that name
+
+3. A shareable URL is created
+
+4. Anyone opening the link sees personalized wishes
+
+5. Clickable cards show cute messages & images
+
 A cute, interactive, SaaS-style web app that lets users create personalized New Year wishes, share them via a link, and spread joy with animations, cards, and love ❤️
 
 Check it out live: [🌐 View Live](http://officialranausama.me/HappyNewYear2026-wish-creation)
@@ -15,13 +27,24 @@ Check it out live: [🌐 View Live](http://officialranausama.me/HappyNewYear2026
 - 📱 Fully **responsive** for desktop and mobile devices  
 
 ---
+🛠️ Tech Stack
+
+HTML5
+
+CSS3 (Animations & Effects)
+
+Vanilla JavaScript
+
+Cloudinary (Images)
+
+GitHub Pages (Hosting) 
 
 ## 📸 Screenshots
 
 **Homepage with Wishes and Confetti**  
-![Homepage Screenshot](https://res.cloudinary.com/daqmobuym/image/upload/v1767209195/l0rtjoymzbkipsst2cmb.png)
-![Modal Screenshot](https://res.cloudinary.com/daqmobuym/image/upload/v1767209195/gb0fhlaeimatkcz2sxov.png)
-
+![Wish Creation](https://res.cloudinary.com/daqmobuym/image/upload/v1767212779/wdhqppoqaxk8wmef7rsm.png)
+![Homepage Screenshot](https://res.cloudinary.com/daqmobuym/image/upload/v1767212780/wr4a54hybbnmmsvpputq.png)
+[Modal Screenshot](https://res.cloudinary.com/daqmobuym/image/upload/v1767212778/j2dt7a2yqrpuaxkcwjqb.png)
 
 ---
 
@@ -29,7 +52,7 @@ Check it out live: [🌐 View Live](http://officialranausama.me/HappyNewYear2026
 
 1. Clone the repository:  
 ```
-git clone https://github.com/YOUR_GITHUB_USERNAME/HappyNewYear2026.git
+git clone https://github.com/usama1095/HappyNewYear2026-wish-creation.git
 ```
 2. Open the project folder:
    ```
