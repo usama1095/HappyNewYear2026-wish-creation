@@ -14,7 +14,7 @@
 
 A cute, interactive, SaaS-style web app that lets users create personalized New Year wishes, share them via a link, and spread joy with animations, cards, and love ❤️
 
-Check it out live: [🌐 View Live](http://officialranausama.me/HappyNewYear2026-wish-creation)
+Check it out live: 🌐 [View Live](https://wishesnewyear2026.netlify.app/)
 ---
 
 ## 🌈 Features
