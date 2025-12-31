@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year 2026!</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to right, #ffe6f0, #fff5cc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 50px 20px 20px;
+    color: #ff4d6d;
+    font-size: 3em;
+    position: relative;
+  }
+
+  /* Confetti styles */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6699;
+    top: -10px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    border-radius: 50%;
+  }
+
+  .confetti.star::after { content: '⭐'; font-size: 1em; }
+  .confetti.heart::after { content: '❤️'; font-size: 0.9em; }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+  }
+
+  .wish-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+  }
+
+  .wish {
+    background: #fff0f5;
+    border-radius: 20px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .wish:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background: #ffd6e8;
+  }
+
+  .wish::after {
+    content: "🕊️";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.5em;
+    animation: bounce 1s infinite alternate;
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+
+  footer {
+    margin-top: auto;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #ff6699;
+    text-align: center;
+  }
+
+  /* Modal Card */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: #fff0f5;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 400px;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: pop 0.3s ease;
+  }
+
+  .modal-content img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #ff6699;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Plane animation */
+  #plane {
+    position: fixed;
+    top: 20%;
+    width: 100px;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .heart-drop {
+    position: fixed;
+    font-size: 1em;
+    z-index: 998;
+    pointer-events: none;
+    animation: heart-fall 4s linear forwards;
+  }
+
+  @keyframes heart-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  🎆 Happy New Year 2026! 🎆
+</header>
+
+<div class="wish-container">
+  <div class="wish">May your 2026 be filled with sparkles, laughter, and endless joy!</div>
+  <div class="wish">Wishing you a year as bright and colorful as your smile.</div>
+  <div class="wish">Let 2026 bring you cozy moments and exciting adventures!</div>
+  <div class="wish">May every day of 2026 be a cute memory waiting to happen.</div>
+  <div class="wish">Sending you bundles of happiness and glittering dreams this New Year!</div>
+  <div class="wish">Cheers to a year of love, surprises, and magical little things!</div>
+  <div class="wish">Hope your 2026 sparkles with positivity and fun everywhere!</div>
+  <div class="wish">New Year, new adventures, same amazing YOU!</div>
+  <div class="wish">May your heart stay light and your days stay sweet all year long.</div>
+  <div class="wish">Here’s to 365 days of hugs, laughter, and adorable moments!</div>
+</div>
+
+<footer>
+  "Every new beginning comes from some other beginning’s end." – Seneca
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" id="close">&times;</span>
+    <h2 id="modal-text">You are cute!</h2>
+    <img id="modal-image" src="" alt="Cute Image">
+  </div>
+</div>
+
+<!-- Plane -->
+<img src="https://res.cloudinary.com/daqmobuym/image/upload/v1767208131/qfp1pzrduv7d0jfixdel.png" id="plane" alt="Plane">
+
+<script>
+  // Confetti
+  const colors = ['#ff6699','#ffcc66','#66ffcc','#66ccff','#ff66cc'];
+  const shapes = ['circle', 'star', 'heart'];
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.classList.add(shapes[Math.floor(Math.random()*shapes.length)]);
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+    confetti.style.animationDuration = (2 + Math.random()*3) + 's';
+    confetti.style.width = confetti.style.height = (5 + Math.random()*10) + 'px';
+    document.body.appendChild(confetti);
+  }
+
+  // Modal logic
+  const images = [
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207694/w3wivv3yeordlahlnhk0.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207693/klgg2g0sss5kajsyykck.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207693/d8higtwcsmlcuwslsfiu.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207694/lvson7euzxrxxaktiytn.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207693/w0w4xeoupg3iaa44a40t.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207694/eb5ddmqddiouliiqe2ti.png",
+    "https://res.cloudinary.com/daqmobuym/image/upload/v1767207693/qldgcbnez4riwnibbcvc.png"
+  ];
+
+  const texts = [
+    "You are cute!", "Shine bright like a star!", "Smiles suit you!", 
+    "You make everything brighter!", "Stay awesome!", "You are amazing!", "Hugs incoming!"
+  ];
+
+  const modal = document.getElementById('modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalText = document.getElementById('modal-text');
+  const closeBtn = document.getElementById('close');
+
+  document.querySelectorAll('.wish').forEach(wish => {
+    wish.addEventListener('click', () => {
+      const index = Math.floor(Math.random()*images.length);
+      modalImage.src = images[index];
+      modalText.textContent = texts[index];
+      modal.style.display = 'flex';
+    });
+  });
+
+  closeBtn.onclick = () => modal.style.display = 'none';
+  window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; }
+
+  // Plane animation with heart drops
+  const plane = document.getElementById('plane');
+  let planePos = window.innerWidth;
+  function animatePlane() {
+    planePos -= 2; // plane speed
+    if (planePos < -plane.width) planePos = window.innerWidth;
+    plane.style.left = planePos + 'px';
+
+    // Drop hearts randomly
+    if (Math.random() < 0.05) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-drop');
+      heart.style.left = (planePos + 50) + 'px';
+      heart.style.top = (plane.offsetTop + 20) + 'px';
+      heart.textContent = '❤️';
+      document.body.appendChild(heart);
+      // Remove heart after animation
+      setTimeout(() => heart.remove(), 4000);
+    }
+    requestAnimationFrame(animatePlane);
+  }
+  animatePlane();
+
+</script>
+
+</body>
+</html>
